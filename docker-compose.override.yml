@@ -194,7 +194,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${POSTGRESS_PATH}
+      device: ${POSTGRES_PATH}
       o: bind
   gf_patterns:
     driver: local
