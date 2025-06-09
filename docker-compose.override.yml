@@ -253,7 +253,7 @@ volumes:
 
 secrets:
   proxy.ca:
-    file: ${CERTS_PATH}/secrets/certs/rengine_chain.pem
+    file: ${CERTS_PATH}/rengine_chain.pem
   proxy.key:
     file: ${CERTS_PATH}/rengine_rsa.key
   proxy.cert:
