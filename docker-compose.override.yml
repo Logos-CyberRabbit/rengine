@@ -140,6 +140,7 @@ services:
       - scan_results:/usr/src/scan_results
     networks:
       - rengine_network
+      - reverse_proxy
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=reverse_proxy"
@@ -172,80 +173,83 @@ services:
 
 networks:
   rengine_network:
+  reverse_proxy:
+    name: reverse_proxy
+    external: true
 
 volumes:
   nginx_conf:
     driver: local
       driver_opts:
-        type: none
-        device: ${NGINX_CONF_PATH}
-        o: bind
+      type: none
+      device: ${NGINX_CONF_PATH}
+      o: bind
   web:
     driver: local
       driver_opts:
-        type: none
-        device: ${WEB_PATH}
-        o: bind
+      type: none
+      device: ${WEB_PATH}
+      o: bind
   tool_config:
     driver: local
       driver_opts:
-        type: none
-        device: ${TOOL_CONFIG_PATH}
-        o: bind
+      type: none
+      device: ${TOOL_CONFIG_PATH}
+      o: bind
   postgres_data:
     driver: local
       driver_opts:
-        type: none
-        device: ${POSTGRESS_PATH}
-        o: bind
+      type: none
+      device: ${POSTGRESS_PATH}
+      o: bind
   gf_patterns:
     driver: local
       driver_opts:
-        type: none
-        device: ${GF_PATH}
-        o: bind
+      type: none
+      device: ${GF_PATH}
+      o: bind
   nuclei_templates:
     driver: local
       driver_opts:
-        type: none
-        device: ${NUCLEI_PATH}
-        o: bind
+      type: none
+      device: ${NUCLEI_PATH}
+      o: bind
   github_repos:
     driver: local
       driver_opts:
-        type: none
-        device: ${GITHUB_PATH}
-        o: bind
+      type: none
+      device: ${GITHUB_PATH}
+      o: bind
   wordlist:
     driver: local
       driver_opts:
-        type: none
-        device: ${WORDLIST_PATH}
-        o: bind
+      type: none
+      device: ${WORDLIST_PATH}
+      o: bind
   scan_results:
     driver: local
       driver_opts:
-        type: none
-        device: ${SCAN_RESULTS_PATH}
-        o: bind
+      type: none
+      device: ${SCAN_RESULTS_PATH}
+      o: bind
   static_volume:
     driver: local
       driver_opts:
-        type: none
-        device: ${STATIC_VOLUME_PATH}
-        o: bind
+      type: none
+      device: ${STATIC_VOLUME_PATH}
+      o: bind
   ollama_data:
     driver: local
       driver_opts:
-        type: none
-        device: ${OLLAMA_PATH}
-        o: bind
+      type: none
+      device: ${OLLAMA_PATH}
+      o: bind
   certs_data:
     driver: local
       driver_opts:
-        type: none
-        device: ${CERTS_PATH}
-        o: bind
+      type: none
+      device: ${CERTS_PATH}
+      o: bind
 
 secrets:
   proxy.ca:
