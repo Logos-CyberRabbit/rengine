@@ -135,7 +135,7 @@ services:
       - source: proxy.key
         target: /etc/nginx/certs/rengine_rsa.key
     volumes:
-      - nginx_conf:/etc/nginx/conf.d/rengine.conf:ro
+      - ${NGINX_CONF_PATH}:/etc/nginx/conf.d/rengine.conf:ro
       - static_volume:/usr/src/app/staticfiles/
       - scan_results:/usr/src/scan_results
     networks:
@@ -178,12 +178,6 @@ networks:
     external: true
 
 volumes:
-  nginx_conf:
-    driver: local
-    driver_opts:
-      type: none
-      device: ${NGINX_CONF_PATH}
-      o: bind
   web:
     driver: local
     driver_opts:
