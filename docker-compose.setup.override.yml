@@ -16,7 +16,7 @@ services:
 volumes:
   certs_data:
     driver: local
-      driver_opts:
-        type: none
-        device: ${CERTS_PATH}
-        o: bind
+    driver_opts:
+      type: none
+      device: ${CERTS_PATH}
+      o: bind
